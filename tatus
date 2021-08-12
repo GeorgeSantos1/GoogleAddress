@@ -1,0 +1,17 @@
+[33mcommit 050b1cae32c87fb7eca63d9e835c95b9b33527c1[m[33m ([m[1;36mHEAD -> [m[1;32mdevelopment[m[33m)[m
+Author: George Anderson <george_13031995@hotmail.com>
+Date:   Thu Aug 12 19:31:35 2021 -0300
+
+    Criação README.md
+
+[33mcommit dc33fd09b3ff9d13587846c8cd9b8d4b5f998760[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: George Anderson <george_13031995@hotmail.com>
+Date:   Thu Aug 12 18:40:02 2021 -0300
+
+    adição da função geocodeLatlong
+
+[33mcommit 2d19e5b8eec72ee820eb2071fdd71ac2b2762491[m
+Author: George Anderson <george_13031995@hotmail.com>
+Date:   Thu Aug 12 15:18:49 2021 -0300
+
+    Primeiro Commit - Criação da função geocodeAddress
