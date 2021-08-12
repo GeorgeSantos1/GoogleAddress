@@ -24,3 +24,21 @@ geocodeAddress <- function(address,api_key) {
   Sys.sleep(0.2)  # API only allows 5 requests per second
   out
 }
+#' geocodeLatlong
+#'
+#' Retorna o endereço através da latitude e longitude
+#'
+#' @param latlong Latutide e longitude do endereço
+#' @param api_key Chave de acesso da API do googlemaps
+#'
+#' @importFrom googleway google_distance
+#'
+#' @export
+geocodeLatlong <- function(latlong,api_key){
+  dist <- google_distance(origins = latlong,
+                          destinations = latlong,
+                          mode = "walking",
+                          key=api_key)
+  print('ok')
+  toupper(dist$origin_addresses)
+}
