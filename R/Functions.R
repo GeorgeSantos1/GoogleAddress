@@ -9,6 +9,7 @@
 #' @importFrom utils URLencode
 #'
 #' @export
+#'
 geocodeAddress <- function(address,api_key) {
   url <- "https://maps.googleapis.com/maps/api/geocode/json?address="
   url <- URLencode(paste(url, address, sep = ""))
@@ -24,6 +25,7 @@ geocodeAddress <- function(address,api_key) {
   Sys.sleep(0.2)  # API only allows 5 requests per second
   out
 }
+
 #' geocodeLatlong
 #'
 #' Retorna o endereço através da latitude e longitude
@@ -34,6 +36,7 @@ geocodeAddress <- function(address,api_key) {
 #' @importFrom googleway google_distance
 #'
 #' @export
+
 geocodeLatlong <- function(latlong,api_key){
   dist <- google_distance(origins = latlong,
                           destinations = latlong,
@@ -41,4 +44,26 @@ geocodeLatlong <- function(latlong,api_key){
                           key=api_key)
   print('ok')
   toupper(dist$origin_addresses)
+}
+
+#' geocodeDist
+#'
+#' Retorna a distância e o tempo de deslocamento entre dois endereços
+#'
+#' @param origin Latutide e longitude do endereço de origem
+#' @param destination Latutide e longitude do endereço de destino
+#' @param mode Forma de deslocamento; \code{"driving"}, \code{'walking'}, \code{'bicycling'} or \code{'transit'}
+#' @param api_key Chave de acesso da API do googlemaps
+#'
+#' @importFrom googleway google_distance
+#' @importFrom  tibble tibble
+#'
+#' @export
+geocodeDist <- function(origin,destination,mode,api_key){
+  dist <- google_distance(origins = origin,
+                          destinations = destination,
+                          mode = mode,
+                          key=api_key)
+  tibble(distancia = tibble(dist$rows[[1]][[1]])$distance$text,
+                 tempo = tibble(dist$rows[[1]][[1]])$duration$text)
 }
